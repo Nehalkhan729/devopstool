@@ -48,8 +48,11 @@ jobs:
         # Upload artifacts to Nexus
     - name: Upload Maven Artifacts to Nexus
       run: |
-        mvn deploy -DaltDeploymentRepository=nexus-releases::default::${{ secrets.NEXUS_REPO_URL }}/repository/maven-releases/
+            # Upload artifacts to Nexus
+   
+    - name: Upload Maven Artifacts to Nexus
+      run: |
+        mvn deploy -DaltDeploymentRepository=nexus-releases::default::http://192.168.248.158:8087/repository/maven-releases/
       env:
         MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-
