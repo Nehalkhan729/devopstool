@@ -44,3 +44,10 @@ jobs:
     # Push Docker image to Docker Hub
     - name: Push Docker Image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USERNAME }}/devopstool-new:latest
+
+    - name: Upload Maven Artifacts to Nexus
+      run: mvn deploy
+      env:
+        MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+        MAVEN_REPO_URL: ${{ secrets.NEXUS_REPO_URL }}
