@@ -44,14 +44,3 @@ jobs:
     # Push Docker image to Docker Hub
     - name: Push Docker Image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USERNAME }}/devopstool-new:latest
-
-        # Upload artifacts to Nexus
-    - name: Upload Maven Artifacts to Nexus
-      run: |
-            # Upload artifacts to Nexus
-   
-    - name: Upload Maven Artifacts to Nexus
-      run: |
-        mvn deploy -DaltDeploymentRepository=nexus-releases::default::http://192.168.248.158:8087/#admin/repository/repositories:maven-releases
-        MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
